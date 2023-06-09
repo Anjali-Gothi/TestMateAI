@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Collection</title>
+  </head>
+  <body>
+    <h1>Book Collection</h1>
+    <a href="{{ url_for('create') }}">Add Book</a>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+      </tr>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+          <a href="{{ url_for('edit', book_id=book.id) }}">Edit</a>
+          <form action="{{ url_for('delete', book_id=book.id) }}" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
