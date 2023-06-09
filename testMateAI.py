@@ -1,7 +1,7 @@
 import openai,os,re,tiktoken
 
 # Set up the OpenAI API client
-openai.api_key = "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"
+openai.api_key = "Use your own key"
 
 # Set the model engine
 model_engine = "text-davinci-003"
