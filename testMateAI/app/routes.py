@@ -2,6 +2,10 @@ from flask import render_template, request, redirect, url_for
 from app import app
 from app.models import Book
 
+from TestMateAI.testMateAI.app import generatetc
+from TestMateAI.testMateAI.app.Requirement import Req
+
+
 @app.route('/')
 def index():
     books = Book.get_all()
@@ -10,10 +14,11 @@ def index():
 @app.route('/books/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
-        title = request.form['title']
-        author = request.form['author']
-        book = Book(title, author)
-        book.save()
+        summary = request.form['summary']
+        description = request.form['description']
+        requirement = Req(summary, description)
+        requirement.save()
+        print(generatetc.generatetc(description))
         return redirect(url_for('index'))
     return render_template('create.html')
 
