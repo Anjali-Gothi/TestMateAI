@@ -1,15 +1,18 @@
+import os
+
 import openai
 import re
 
 # Set up the OpenAI API client
-openai.api_key = ""
+secret_key = os.environ['SECRET_KEY']
 
 # Set the model engine
 model_engine = "text-davinci-003"
-def generatetc(text):
 
+
+def generatetc(text):
     # Set the prompt (the one-line requirement)
-    text = "Login with username and password"
+    # text = "Login with username and password"
     prompt = re.sub(r'\n+', ' ', text)
     # print(prompt)
     # Generate test cases using the OpenAI API
